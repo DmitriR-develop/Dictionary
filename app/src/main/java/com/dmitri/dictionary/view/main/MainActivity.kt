@@ -5,36 +5,29 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dmitri.dictionary.R
-import com.dmitri.dictionary.application.TranslatorApp
 import com.dmitri.dictionary.databinding.ActivityMainBinding
 import com.dmitri.dictionary.model.data.AppState
 import com.dmitri.dictionary.view.base.View
 import com.dmitri.dictionary.view.main.adapter.MainAdapter
-import javax.inject.Inject
+import org.koin.android.ext.android.get
 
 class MainActivity : AppCompatActivity(), View {
-    @Inject
-    internal lateinit var viewmodelFactory: ViewModelProvider.Factory
 
     private var adapter: MainAdapter? = null
-    val model: MainViewModel by lazy {
-        viewmodelFactory.create(MainViewModel::class.java)
-    }
+    val model: MainViewModel = get()
     private val observer = Observer<AppState> { renderData(it) }
     private var _binding: ActivityMainBinding? = null
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
-        TranslatorApp.component.inject(this)
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.searchButton.setOnClickListener {
             model.getData(binding.searchEditText.text.toString(), true)
         }
-        model.viewState.observe(this, observer)
+        model.subscribe().observe(this, observer)
     }
 
     override fun renderData(appState: AppState) {

@@ -2,21 +2,17 @@ package com.dmitri.dictionary.model.datasource
 
 import com.dmitri.dictionary.model.data.DataModel
 import com.google.gson.GsonBuilder
-import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import io.reactivex.Observable
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import javax.inject.Inject
-import javax.inject.Singleton
 
-@Singleton
-class RetrofitImpl @Inject constructor() : DataSource<List<DataModel>> {
-    override fun getData(word: String): Observable<List<DataModel>> {
+class RetrofitImpl : DataSource<List<DataModel>> {
+    override suspend fun getData(word: String): List<DataModel> {
         return Retrofit.Builder()
             .baseUrl(BASE_URL_LOCATIONS)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create())).build()
-            .create(ApiService::class.java).search(word)
+            .create(ApiService::class.java).searchAsync(word).await()
     }
 
     companion object {

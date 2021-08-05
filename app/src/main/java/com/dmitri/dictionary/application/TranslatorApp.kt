@@ -1,16 +1,18 @@
 package com.dmitri.dictionary.application
 
 import android.app.Application
-import com.dmitri.dictionary.di.AppComponent
-import com.dmitri.dictionary.di.DaggerAppComponent
+import com.dmitri.dictionary.di.application
+import com.dmitri.dictionary.di.mainScreen
+import org.koin.core.context.startKoin
 
 class TranslatorApp : Application() {
-    companion object {
-        lateinit var component: AppComponent
-    }
 
     override fun onCreate() {
         super.onCreate()
-        component = DaggerAppComponent.builder().build()
+        startKoin {
+            modules(
+                application + mainScreen
+            )
+        }
     }
 }
