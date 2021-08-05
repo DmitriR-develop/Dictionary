@@ -1,4 +1,4 @@
-package com.dmitri.dictionary.presenter
+package com.dmitri.dictionary.viewmodel
 
 import io.reactivex.Observable
 

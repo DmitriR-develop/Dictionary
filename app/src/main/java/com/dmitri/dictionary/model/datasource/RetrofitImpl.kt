@@ -6,8 +6,11 @@ import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import io.reactivex.Observable
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RetrofitImpl : DataSource<List<DataModel>> {
+@Singleton
+class RetrofitImpl @Inject constructor() : DataSource<List<DataModel>> {
     override fun getData(word: String): Observable<List<DataModel>> {
         return Retrofit.Builder()
             .baseUrl(BASE_URL_LOCATIONS)
