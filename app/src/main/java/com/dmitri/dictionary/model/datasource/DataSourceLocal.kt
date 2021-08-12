@@ -1,7 +1,8 @@
 package com.dmitri.dictionary.model.datasource
 
-import com.dmitri.dictionary.model.data.DataModel
+import com.dmitri.dictionary.model.data.AppState
 
-class DataSourceLocal(private val localProvider: RoomDataBaseImpl) : DataSource<List<DataModel>> {
-    override suspend fun getData(word: String): List<DataModel> = localProvider.getData(word)
+interface DataSourceLocal<T> : DataSource<T> {
+    suspend fun saveToDB(appState: AppState)
+    suspend fun getDataByWord(word: String): T
 }

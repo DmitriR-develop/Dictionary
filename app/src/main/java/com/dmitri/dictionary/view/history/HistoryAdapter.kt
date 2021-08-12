@@ -1,16 +1,13 @@
-package com.dmitri.dictionary.view.main.adapter
+package com.dmitri.dictionary.view.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.dmitri.dictionary.databinding.ActivityMainRecyclerviewItemBinding
+import com.dmitri.dictionary.databinding.ActivityHistoryItemBinding
 import com.dmitri.dictionary.model.data.DataModel
 
-class MainAdapter(
-    private var data: List<DataModel>,
-    private var onListItemClickListener: OnListItemClickListener
-) :
-    RecyclerView.Adapter<MainAdapter.RecyclerItemViewHolder>() {
+class HistoryAdapter(private var data: List<DataModel>) :
+    RecyclerView.Adapter<HistoryAdapter.RecyclerItemViewHolder>() {
 
     fun setData(data: List<DataModel>) {
         this.data = data
@@ -19,7 +16,7 @@ class MainAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerItemViewHolder {
         return RecyclerItemViewHolder(
-            ActivityMainRecyclerviewItemBinding
+            ActivityHistoryItemBinding
                 .inflate(LayoutInflater.from(parent.context), parent, false)
         )
     }
@@ -32,16 +29,10 @@ class MainAdapter(
         return data.size
     }
 
-    interface OnListItemClickListener {
-        fun onItemClick(data: DataModel)
-    }
-
-    inner class RecyclerItemViewHolder(val view: ActivityMainRecyclerviewItemBinding) :
+    inner class RecyclerItemViewHolder(val view: ActivityHistoryItemBinding) :
         RecyclerView.ViewHolder(view.root) {
         fun bind(data: DataModel) {
-            view.headerTextviewRecyclerItem.text = data.text
-            view.descriptionTextviewRecyclerItem.text =
-                data.meanings?.get(0)?.translation?.translation
+            view.wordTextviewRv.text = data.text
         }
     }
 }
