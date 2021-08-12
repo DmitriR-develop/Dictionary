@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">Dictionary</string>
+    <string name="error_textview_stub">Error</string>
+    <string name="reload_button">Reload</string>
+    <string name="undefined_error">Undefined error</string>
+    <string name="empty_server_response_on_success">Response from server is empty</string>
+    <string name="button_search">Search</string>
+    <string name="search_hint">New word</string>
+    <string name="delete_description">X</string>
+    <string name="search">Search</string>
+    <string name="error">Error</string>
+    <string name="reload">Reload</string>
+    <string name="error_empty_response">Response from server is empty</string>
+    <string name="error_undefined">Undefined error</string>
+    <string name="history_text">History</string>
+    <string name="word_rv">Word</string>
+    <string name="history_search">History search</string>
+    <string name="image_stub">image</string>
+    <string name="header_text">Header</string>
+    <string name="description_text">Description</string>
 </resources>

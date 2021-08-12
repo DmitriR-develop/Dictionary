@@ -2,29 +2,18 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
+
 
     <LinearLayout
         android:id="@+id/success_linear_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".view.main.MainActivity">
-
-        <EditText
-            android:id="@+id/search_edit_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/search_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/search" />
+        tools:context=".view.history.HistoryActivity">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/main_activity_rv"
+            android:id="@+id/history_activity_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
@@ -59,15 +48,15 @@
         android:visibility="gone">
 
         <TextView
-            android:id="@+id/error_textview"
+            android:id="@+id/error_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/error_textview_stub" />
+            android:text="@string/error" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/reload_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/reload_button" />
+            android:text="@string/reload" />
     </LinearLayout>
 </FrameLayout>
