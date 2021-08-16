@@ -12,14 +12,13 @@ import com.dmitri.dictionary.R
 import com.dmitri.dictionary.databinding.ActivityMainBinding
 import com.dmitri.dictionary.model.data.AppState
 import com.dmitri.dictionary.model.data.DataModel
-import com.dmitri.dictionary.view.base.BaseActivity
 import com.dmitri.dictionary.view.descriptionscreen.DescriptionActivity
 import com.dmitri.dictionary.view.history.HistoryActivity
 import com.dmitri.dictionary.view.history.search.HistorySearchActivity
 import com.dmitri.dictionary.view.main.adapter.MainAdapter
 import org.koin.android.ext.android.get
 
-class MainActivity : BaseActivity<AppState>() {
+class MainActivity : com.dmitri.core.BaseActivity<AppState>() {
 
     private var adapter: MainAdapter? = null
     override val model: MainViewModel = get()
@@ -34,7 +33,7 @@ class MainActivity : BaseActivity<AppState>() {
                         this@MainActivity,
                         data.text!!,
                         data.meanings!![0].translation?.translation.toString(),
-                        data.meanings[0].imageUrl
+                        data.meanings!![0].imageUrl
                     )
                 )
             }

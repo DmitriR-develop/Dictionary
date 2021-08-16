@@ -2,14 +2,13 @@ package com.dmitri.dictionary.view.main
 
 import androidx.lifecycle.LiveData
 import com.dmitri.dictionary.model.data.AppState
-import com.dmitri.dictionary.viewmodel.BaseViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(
     private val interactor: MainInteractor
-) : BaseViewModel<AppState>() {
+) : com.dmitri.core.viewmodel.BaseViewModel<AppState>() {
 
     private val liveDataForViewToObserve: LiveData<AppState> = _mutableLiveData
 

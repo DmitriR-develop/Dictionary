@@ -7,11 +7,10 @@ import androidx.lifecycle.Observer
 import com.dmitri.dictionary.R
 import com.dmitri.dictionary.databinding.ActivityHistorySearchBinding
 import com.dmitri.dictionary.model.data.AppState
-import com.dmitri.dictionary.view.base.BaseActivity
+import com.dmitri.core.BaseActivity
 import com.dmitri.dictionary.view.descriptionscreen.DescriptionActivity
-import org.koin.android.ext.android.get
 
-class HistorySearchActivity : BaseActivity<AppState>() {
+class HistorySearchActivity : com.dmitri.core.BaseActivity<AppState>() {
     override val model: HistorySearchViewModel = get()
     private val observer = Observer<AppState> { renderData(it) }
     private var _binding: ActivityHistorySearchBinding? = null

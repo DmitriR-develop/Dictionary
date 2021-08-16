@@ -2,14 +2,13 @@ package com.dmitri.dictionary.view.history.search
 
 import androidx.lifecycle.LiveData
 import com.dmitri.dictionary.model.data.AppState
-import com.dmitri.dictionary.viewmodel.BaseViewModel
+import com.dmitri.core.viewmodel.BaseViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class HistorySearchViewModel(
     private val interactor: HistorySearchInteractor
-) : BaseViewModel<AppState>() {
+) : com.dmitri.core.viewmodel.BaseViewModel<AppState>() {
 
     private val liveDataForViewToObserve: LiveData<AppState> = _mutableLiveData
 

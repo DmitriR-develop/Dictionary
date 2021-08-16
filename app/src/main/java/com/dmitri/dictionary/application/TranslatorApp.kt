@@ -3,7 +3,6 @@ package com.dmitri.dictionary.application
 import android.app.Application
 import com.dmitri.dictionary.di.application
 import com.dmitri.dictionary.di.historyScreen
-import com.dmitri.dictionary.di.historySearchScreen
 import com.dmitri.dictionary.di.mainScreen
 import org.koin.core.context.startKoin
 
@@ -13,7 +12,7 @@ class TranslatorApp : Application() {
         super.onCreate()
         startKoin {
             modules(
-                application + mainScreen + historyScreen + historySearchScreen
+                application + mainScreen + historyScreen
             )
         }
     }
