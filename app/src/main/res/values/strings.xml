@@ -18,4 +18,5 @@
     <string name="image_stub">image</string>
     <string name="header_text">Header</string>
     <string name="description_text">Description</string>
+    <string name="title_historyscreenfeature">History Screen Feature</string>
 </resources>

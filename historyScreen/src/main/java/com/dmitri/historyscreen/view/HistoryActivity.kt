@@ -6,14 +6,15 @@ import android.view.View.VISIBLE
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dmitri.dictionary.R
-import com.dmitri.dictionary.databinding.ActivityHistoryBinding
 import com.dmitri.dictionary.model.data.AppState
-import com.dmitri.core.BaseActivity
+import com.dmitri.historyscreen.databinding.ActivityHistoryBinding
+import com.dmitri.historyscreen.di.injectDependencies
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HistoryActivity : com.dmitri.core.BaseActivity<AppState>() {
 
     private var adapter: HistoryAdapter? = null
-    override val model: HistoryViewModel = get()
+    override val model: HistoryViewModel by viewModel()
     private val observer = Observer<AppState> { renderData(it) }
     private var _binding: ActivityHistoryBinding? = null
     private val binding get() = _binding!!
@@ -21,6 +22,7 @@ class HistoryActivity : com.dmitri.core.BaseActivity<AppState>() {
         super.onCreate(savedInstanceState)
         _binding = ActivityHistoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        injectDependencies()
         model.subscribe().observe(this, observer)
     }
 
