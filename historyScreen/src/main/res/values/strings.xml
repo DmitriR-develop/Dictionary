@@ -1,0 +1,7 @@
+<resources>
+
+    <string name="error">Error</string>
+    <string name="reload">Reload</string>
+    <string name="word_rv">Word</string>
+    <string name="error_undefined">Undefined error</string>
+</resources>
